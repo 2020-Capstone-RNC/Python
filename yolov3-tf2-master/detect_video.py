@@ -44,7 +44,7 @@ def get_mid(box):
 def ardu(box):
     try:
         mid = get_mid(box)
-        print(mid,end="   ")
+        print(box,end="   ")
         if mid <= 90:
             print("큰좌회전")
             c = str('e')
@@ -93,7 +93,7 @@ def draw_outputs(img, outputs, class_names):
 
 flags.DEFINE_string('classes', './data/coco.names', 'path to classes file')
 flags.DEFINE_string('weights', './checkpoints/yolov3.tf',
-                    'path to weights file')
+                    'path to weights file').
 flags.DEFINE_boolean('tiny', False, 'yolov3 or yolov3-tiny')
 flags.DEFINE_integer('size', 416, 'resize images to')
 flags.DEFINE_string('video', './data/video.mp4',
