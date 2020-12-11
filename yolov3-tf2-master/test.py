@@ -137,7 +137,7 @@ if __name__ == '__main__':
     ################# yolo set #########################
     args = arg_parse()
     confidence = float(args.confidence)
-    nms_thesh = float(args.nms_thresh)
+    nms_thesh = float(args.nms_thresh)S
 
     CUDA = torch.cuda.is_available()
     num_classes = 80
@@ -203,6 +203,7 @@ if __name__ == '__main__':
                 text = '{}: {}'.format(k, v)
                 cv2.putText(frame, text, (10, H - ((i * 20) + 20)),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255, 2))
+# (cap = vid /frame = img/)
 
         if redetect:
             ret, frame = cap.read()
@@ -230,11 +231,11 @@ if __name__ == '__main__':
         key = cv2.waitKey(1) & 0xFF
         if key == ord('s') or start=='s':
             start = 'a'
-            img, orig_im, dim = prep_image(frame, inp_dim)
+            img2, orig_im, dim = prep_image(frame, inp_dim)
             cv2.imshow('Frame', frame)
             if CUDA:
                 # im_dim = im_dim.cuda()
-                img = img.cuda()
+                img2 = img.cuda()
 
             with torch.no_grad():
                 output = model(Variable(img), CUDA)
